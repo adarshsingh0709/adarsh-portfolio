@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Singh | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold text-blue-600">Adarsh Singh</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600">Experience</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hi, I'm <span class="text-blue-600">Adarsh Singh</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">Software Development Engineer</h2>
+                    <p class="text-lg text-gray-600 mb-8">I build innovative solutions with a focus on user experience and clean code.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Hire Me</a>
+                        <a href="#projects" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">View Work</a>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://www.linkedin.com/in/adarsh-singh-9976a924a" target="_blank" class="text-gray-700 hover:text-blue-600 text-xl"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/adarshsingh0709" target="_blank" class="text-gray-700 hover:text-blue-600 text-xl"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/u/Adarsh_0709/" target="_blank" class="text-gray-700 hover:text-blue-600 text-xl"><i class="fas fa-code"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 fade-in delay-100">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-blue-200 rounded-full mx-auto overflow-hidden border-4 border-white shadow-xl">
+                            <!-- Profile image -->
+                            <img src="assets/image_adarsh.jpg" alt="Adarsh Singh - Software Development Engineer" class="w-full h-full object-cover profile-image">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-full mr-2">
+                                    <i class="fas fa-code text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Full Stack Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">About <span class="text-blue-600">Me</span></h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 fade-in">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Personal Info</h3>
+                        <div class="space-y-3">
+                            <p><span class="font-medium">Name:</span> Adarsh Singh</p>
+                            <p><span class="font-medium">Email:</span> adarshsingh782004@gmail.com</p>
+                            <p><span class="font-medium">Phone:</span> +91 9555943296</p>
+                            <p><span class="font-medium">Education:</span> B.Tech, Computer Science Engineering</p>
+                            <p><span class="font-medium">University:</span> Manav Rachna International Institute of Research and Studies</p>
+                            <p><span class="font-medium">CGPA:</span> 7.7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12 fade-in delay-100">
+                    <h3 class="text-2xl font-semibold mb-6">Who I Am</h3>
+                    <p class="text-gray-600 mb-6">I'm a passionate Software Development Engineer with experience in full-stack web development, Python programming, and building innovative solutions. I enjoy tackling complex problems and creating efficient, user-friendly applications.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-4">Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-medium mb-2">Technical Skills</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-sm mb-1">Python, C, C++</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">HTML, CSS, JavaScript</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">PHP, Flask</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">MySQL, MongoDB</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">Soft Skills</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <p class="text-sm mb-1">Communication</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">Problem Solving</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">Teamwork</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm mb-1">Creativity</p>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mb-4">Interests</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><i class="fas fa-podcast mr-1"></i> Podcasts</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><i class="fas fa-car mr-1"></i> Automobiles</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><i class="fas fa-globe-americas mr-1"></i> Traveling</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><i class="fas fa-robot mr-1"></i> AI & ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">My <span class="text-blue-600">Experience</span></h2>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 h-full w-1 bg-blue-200 transform -translate-x-1/2"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-12">
+                    <!-- Experience 1 -->
+                    <div class="flex flex-col md:flex-row items-center fade-in">
+                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
+                            <h3 class="text-xl font-semibold">Web Development Intern</h3>
+                            <p class="text-blue-600 font-medium">Bizhawkz IT Solutions Pvt Ltd.</p>
+                            <p class="text-gray-500">June 2025 – Present | Faridabad, India</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white z-10 mx-auto">
+                            <i class="fas fa-briefcase text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>Designed and developed a full-stack interactive website using PHP, MySQL, HTML5, CSS3, and JavaScript</li>
+                                <li>Integrated RESTful APIs to fetch dynamic data and built custom backend logic using PHP</li>
+                                <li>Worked on MySQL database design, optimized queries, and structured schema for scalable data storage</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 2 -->
+                    <div class="flex flex-col md:flex-row items-center fade-in delay-100">
+                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right order-1 md:order-none">
+                            <h3 class="text-xl font-semibold">Python Development Intern</h3>
+                            <p class="text-blue-600 font-medium">CodeAlpha</p>
+                            <p class="text-gray-500">June 2024 – Aug 2024 | Remote</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white z-10 mx-auto">
+                            <i class="fas fa-laptop-code text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-2 md:order-none">
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>Designed and implemented an interactive chatbot using Python with NLTK and Tkinter</li>
+                                <li>Integrated basic API support for extending chatbot functionality and real-time responses</li>
+                                <li>Applied modular programming and OOP concepts for project structure and maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Education -->
+                    <div class="flex flex-col md:flex-row items-center fade-in delay-200">
+                        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
+                            <h3 class="text-xl font-semibold">B.Tech, Computer Science Engineering</h3>
+                            <p class="text-blue-600 font-medium">Manav Rachna International Institute of Research and Studies</p>
+                            <p class="text-gray-500">2022-2026 | Faridabad, India</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white z-10 mx-auto">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12">
+                            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                                <li>CGPA: 7.7</li>
+                                <li>Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">My <span class="text-blue-600">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Chitragupta-AI Assistant</h3>
+                        <p class="text-gray-600 mb-4">A personal AI voice assistant that can respond to voice commands, open websites, play music, tell time, and perform basic system tasks.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Speech Recognition</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">pyttsx3</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in delay-100">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-user-md text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Wrong Posture Detection System</h3>
+                        <p class="text-gray-600 mb-4">An IoT-enabled wearable system using flex sensors and Arduino UNO to monitor spinal posture and detect incorrect body alignment in real time.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Arduino</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">C</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">IoT</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Flex Sensors</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in delay-200">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-cloud-sun text-6xl text-yellow-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Weather Application</h3>
+                        <p class="text-gray-600 mb-4">A webpage that shows updated weather forecast of any place as per user search using Open Weather Map API.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">HTML</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">CSS</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">API</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in delay-300">
+                <a href="https://github.com/adarshsingh0709" target="_blank" class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition duration-300">
+                    <i class="fab fa-github mr-2"></i> View More on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 fade-in">Get In <span class="text-blue-600">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 fade-in">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="text-gray-600 mb-8">Feel free to reach out to me for any questions or opportunities. I'll get back to you as soon as possible!</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-gray-600">adarshsingh782004@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p class="text-gray-600">+91 9555943296</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-600">Faridabad, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">Connect with me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/adarsh-singh-9976a924a" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/adarshsingh0709" target="_blank" class="bg-gray-800 hover:bg-gray-900 text-white p-3 rounded-full transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://leetcode.com/u/Adarsh_0709/" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-full transition duration-300">
+                                <i class="fas fa-code"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 fade-in delay-100">
+                    <form id="contact-form" class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                            <span id="submit-text">Send Message</span>
+                            <i id="submit-icon" class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Adarsh Singh. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="hover:text-blue-400 transition duration-300">Home</a>
+                    <a href="#about" class="hover:text-blue-400 transition duration-300">About</a>
+                    <a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a>
+                    <a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('#contact-form button[type="submit"]');
+            const submitText = document.getElementById('submit-text');
+            const submitIcon = document.getElementById('submit-icon');
+            
+            // Change button state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Sending...';
+            submitIcon.classList.remove('fa-paper-plane');
+            submitIcon.classList.add('fa-spinner', 'fa-spin');
+            
+            // Simulate form submission (in a real scenario, you would use AJAX)
+            setTimeout(() => {
+                submitText.textContent = 'Message Sent!';
+                submitIcon.classList.remove('fa-spinner', 'fa-spin');
+                submitIcon.classList.add('fa-check');
+                
+                // Reset form
+                setTimeout(() => {
+                    document.getElementById('contact-form').reset();
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Send Message';
+                    submitIcon.classList.remove('fa-check');
+                    submitIcon.classList.add('fa-paper-plane');
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Run once on page load
+        animateOnScroll();
+        
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const windowHeight = window.innerHeight;
+            
+            skillBars.forEach(bar => {
+                const barPosition = bar.getBoundingClientRect().top;
+                
+                if (barPosition < windowHeight - 100) {
+                    // Width is already set via inline style
+                    bar.style.transition = 'width 1s ease';
+                }
+            });
+        };
+        
+        // Run once on page load
+        animateSkillBars();
+        
+        // Run on scroll
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+</body>
+</html>
